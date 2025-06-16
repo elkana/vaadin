@@ -2,6 +2,7 @@ package com.example.vaadin_dialog_filter.views;
 
 import java.util.Map;
 
+import com.example.vaadin_dialog_filter.Settings;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
@@ -14,9 +15,13 @@ import com.vaadin.flow.router.Route;
 public class HomeView extends VerticalLayout {
     private final TextField description = new TextField("Description");
 
-    public HomeView() {
+    public HomeView(Settings settings) {
         add(description);
         add(new Button("Open Dialog", e -> showDialog()));
+        add(new Button("Settings Dialog", e -> {
+            var dialog = new SetupDialog(settings);
+            dialog.open();
+        }));
     }
 
     private void showDialog() {
@@ -38,10 +43,9 @@ public class HomeView extends VerticalLayout {
 
         filter.addValueChangeListener(e -> {
             lovGrid.setItems(
-                data.stream()
-                    .filter(task -> task.get("description").toLowerCase().contains(e.getValue().toLowerCase()))
-                    .toList()
-            );
+                    data.stream()
+                            .filter(task -> task.get("description").toLowerCase().contains(e.getValue().toLowerCase()))
+                            .toList());
         });
 
         var dialog = new Dialog();
@@ -60,4 +64,5 @@ public class HomeView extends VerticalLayout {
         dialog.open();
 
     }
+
 }

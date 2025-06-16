@@ -1,6 +1,6 @@
-package com.example.vaadin_prospectus_db.views.components;
+package com.example.vaadin_dialog_filter.views;
 
-import com.example.vaadin_prospectus_db.settings.Settings;
+import com.example.vaadin_dialog_filter.Settings;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
