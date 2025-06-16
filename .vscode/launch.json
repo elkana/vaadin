@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-VaadinDialogFilterApplication<vaadin-dialog-filter>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.vaadin_dialog_filter.VaadinDialogFilterApplication",
+            "projectName": "vaadin-dialog-filter",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "javaExec": "C:\\Users\\Administrator\\.vaadin\\jdk\\jbrsdk-21.0.7-windows-x64-b992.24\\bin\\java.exe",
+            "vmArgs": "-XX:+AllowEnhancedClassRedefinition -XX:+ClassUnloading -XX:HotswapAgent=fatjar"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-VaadinGridPageableApplication<vaadin-grid-pageable>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.vaadin_grid_pageable.VaadinGridPageableApplication",
+            "projectName": "vaadin-grid-pageable",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
