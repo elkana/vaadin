@@ -13,40 +13,31 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 
 public class SetupDialog extends Dialog {
-    private final Settings settings;
     private final Binder<Settings> binder;
 
     public SetupDialog(Settings settings) {
-        this.settings = settings;
         this.binder = new Binder<>(Settings.class);
         
         setWidth("600px");
         
-        VerticalLayout layout = new VerticalLayout();
-        layout.setAlignItems(FlexComponent.Alignment.STRETCH);
+        var layout = new VerticalLayout(FlexComponent.Alignment.STRETCH);
         
-        H3 title = new H3("JamAIBase Settings");
+        H3 title = new H3("Settings");
         layout.add(title);
         
         FormLayout form = new FormLayout();
         
-        TextField adminApiUrl = new TextField("Admin API URL");
-        TextField tableActionApiUrl = new TextField("Table Action API URL");
-        TextField llmApiUrl = new TextField("LLM API URL");
-        TextField organizationId = new TextField("Organization ID");
-        PasswordField tokenId = new PasswordField("Token ID");
+        var adminApiUrl = new TextField("Admin API URL");
+        var tableActionApiUrl = new TextField("Table Action API URL");
+        var tokenId = new PasswordField("Token ID");
         
-        form.add(adminApiUrl, tableActionApiUrl, llmApiUrl, organizationId, tokenId);
+        form.add(adminApiUrl, tableActionApiUrl, tokenId);
         
         // Bind fields to settings
         binder.forField(adminApiUrl)
             .bind(Settings::getAdminApiUrl, Settings::setAdminApiUrl);
         binder.forField(tableActionApiUrl)
             .bind(Settings::getTableActionApiUrl, Settings::setTableActionApiUrl);
-        binder.forField(llmApiUrl)
-            .bind(Settings::getLlmApiUrl, Settings::setLlmApiUrl);
-        binder.forField(organizationId)
-            .bind(Settings::getOrganizationId, Settings::setOrganizationId);
         binder.forField(tokenId)
             .bind(Settings::getTokenId, Settings::setTokenId);
         
@@ -65,8 +56,7 @@ public class SetupDialog extends Dialog {
             }
         });
         
-        HorizontalLayout buttons = new HorizontalLayout(closeButton, saveButton);
-        buttons.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
+        var buttons = new HorizontalLayout(FlexComponent.JustifyContentMode.END, closeButton, saveButton);
         layout.add(buttons);
         
         add(layout);

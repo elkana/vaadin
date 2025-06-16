@@ -10,18 +10,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Settings {
-    @Value("${jamaibase.api.admin}")
+    @Value("${api.admin:url}")
     private String adminApiUrl;
     
-    @Value("${jamaibase.api.table.action}")
+    @Value("${api.table.action:action}")
     private String tableActionApiUrl;
     
-    @Value("${jamaibase.api.llm}")
-    private String llmApiUrl;
-    
-    @Value("${organization.id}")
-    private String organizationId;
-    
-    @Value("${token.id}")
+    @Value("${token.id:123abc}")
     private String tokenId;
 }
